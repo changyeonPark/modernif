@@ -20,11 +20,14 @@ let idFlag = true
 let pwFlag = true
 let rePwFlag = true
 let mailFlag = true
+let idDuplication;
 
 // 아이디 조건 체크
 inputId.addEventListener("keyup", () => {
 
-    if (!idCheck.exec(inputId.value)){
+    idDuplication = ""
+
+    if (!idCheck.exec(inputId.value)) {
         document.querySelector(".userIdDiv > p").style.color = "red";
         idFlag = false
     } else {
@@ -35,7 +38,7 @@ inputId.addEventListener("keyup", () => {
 
 // 비밀번호 조건 체크
 inputPw.addEventListener("keyup", () => {
-    if (!idCheck.exec(inputPw.value)){
+    if (!idCheck.exec(inputPw.value)) {
         document.querySelector(".userMailDiv > p").style.color = "red";
         mailFlag = false
     } else {
@@ -46,7 +49,7 @@ inputPw.addEventListener("keyup", () => {
 
 // 비밀번호 재입력 조건체크
 inputRwPw.addEventListener("keyup", () => {
-    if (inputPw.value === inputRwPw.value){
+    if (inputPw.value === inputRwPw.value) {
         document.querySelector(".userPwReDiv > p").textContent = "영문 소문자/숫자, 4-16자";
         document.querySelector(".userPwReDiv > p").style.color = "#999";
         rePwFlag = true
@@ -62,7 +65,7 @@ inputRwPw.addEventListener("keyup", () => {
 
 // 이메일 조건 체크
 inputMail.addEventListener("keyup", () => {
-    if (!mailCheck.exec(inputMail.value)){
+    if (!mailCheck.exec(inputMail.value)) {
         document.querySelector(".userMailDiv > p").style.display = "block";
         document.querySelector(".userMailDiv > p").style.color = "red";
         pwFlag = false
@@ -75,51 +78,83 @@ inputMail.addEventListener("keyup", () => {
 
 let userPhoneNum = [];
 
+const idCheckBtn = document.querySelector("#idDuplicationCheck")
+
+
+idCheckBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const users = JSON.parse(localStorage.getItem("users"))
+
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].userId === inputId.value) {
+            alert("사용중인 아이디 입니다. 다른 아이디를 입력해주세요.")
+            inputId.value = ""
+            inputId.focus()
+            idDuplication = false
+            return
+        }
+    }
+
+    if (idDuplication === false || idDuplication !== "" || idDuplication !== null) {
+        alert("사용 가능 한 아이디 입니다.")
+        idDuplication = true
+    }
+})
 
 /* 최종 submit */
 signUpBtn.addEventListener("click", (e) => {
     e.preventDefault()
 
+    if (idDuplication === "" || idDuplication === null) {
+        alert("아이디 중복 체크를 해주세요.")
+        return
+    }
+
+    if (idDuplication === false) {
+        alert("사용 중인 아이디 입니다. 다른 아이디를 입력해주세요.")
+        return
+    }
+
     // 아이디 체크
-    if (idFlag === false || inputId.value === ""){
+    if (idFlag === false || inputId.value === "") {
         inputId.focus()
         return
     }
 
     // 비밀번호 체크
-    if (pwFlag === false || inputPw.value === ""){
+    if (pwFlag === false || inputPw.value === "") {
         inputPw.focus()
         return
     }
 
     // 비밀번호 재입력 조건 체크
-    if (rePwFlag === false || inputRwPw.value === ""){
+    if (rePwFlag === false || inputRwPw.value === "") {
         inputRwPw.focus()
         return
     }
 
-    if (inputName.value === ""){
+    if (inputName.value === "") {
         document.querySelector(".userNameDiv > p").style.display = "block"
         inputName.focus()
         return
     }
 
-    if (inputMail.value === "" || mailFlag === false){
+    if (inputMail.value === "" || mailFlag === false) {
         inputMail.focus()
         return
     }
 
-    if (phoneNum[1].value.length < 3){
+    if (phoneNum[1].value.length < 3) {
         phoneNum[1].focus()
         return
     }
 
-    if (phoneNum[2].value.length < 4){
+    if (phoneNum[2].value.length < 4) {
         phoneNum[2].focus()
         return
     }
 
-    phoneNum.forEach( (el) => {
+    phoneNum.forEach((el) => {
         userPhoneNum.push(el.value)
     })
 
@@ -129,10 +164,20 @@ signUpBtn.addEventListener("click", (e) => {
 
 })
 
-function registUser(){
+function registUser() {
 
     let users = JSON.parse(localStorage.getItem("users")) || []
-    users.push({"userId": inputId.value, "password": inputPw.value, "userName": inputName.value, "roadAddr": roadAddr.value, "detailAddr": detailAddr.value, "userPhone": userPhoneNum, "userMail": inputMail.value, "postCode": postCode.value, "extraAddr": extraAddr.value})
+    users.push({
+        "userId": inputId.value,
+        "password": inputPw.value,
+        "userName": inputName.value,
+        "roadAddr": roadAddr.value,
+        "detailAddr": detailAddr.value,
+        "userPhone": userPhoneNum,
+        "userMail": inputMail.value,
+        "postCode": postCode.value,
+        "extraAddr": extraAddr.value
+    })
 
     localStorage.setItem("users", JSON.stringify(users))
 }
