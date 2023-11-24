@@ -11,7 +11,7 @@ const phoneNum = document.getElementsByName("phone[]")
 const inputMail = document.querySelector("#userEmail")
 
 // 아이디 정규 표현식
-const idCheck = /^[a-z0-9]{4,16}$/;
+const idCheck = /^[a-z0-9]{4,16}$/; 
 
 // 메일 형식 정규 표현식
 const mailCheck = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
