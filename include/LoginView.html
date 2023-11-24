@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+</head>
+
+<link rel="stylesheet" href="/modernif/resources/css/LoginCss.css">
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <p> LOGIN</p>
+        </div>
+
+        <div class="body">
+            <form name="userInfo" method="POST">
+                <div class="userInfoHeader">
+                    <div>
+                        아이디
+                    </div>
+                    <div class="userInfoContent">
+                        <input type="text" name="userId" id="userId" placeholder="아이디를 입력해주세요.">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="userInfoBody">
+                    <div>
+                        비밀번호
+                    </div>
+                    <div class="userInfoContent">
+                        <input type="password" name="userPw" id="userPw" placeholder="비밀번호를 입력해주세요.">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="userInfoFooter">
+                    <button id="loginBtn">LOGIN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const inputId = document.querySelector("#userId")
+        const inputPw = document.querySelector("#userPw")
+        const loginBtn = document.querySelector("#loginBtn")
+
+        let loginState = false
+        let loginInfo = []
+
+        loginBtn.addEventListener("click", (e) => {
+            e.preventDefault()
+
+            let users = JSON.parse(localStorage.getItem("users"))
+
+
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].userId === inputId.value){
+                    if (users[i].password === inputPw.value){
+
+                        loginState = true
+
+                        loginInfo.push( {"loginState": loginState, "loginId": inputId.value, "userName": users[i].userName})
+                        sessionStorage.setItem("loginInfo", JSON.stringify(loginInfo))
+
+                        location.href = "../index.html"
+                        return
+                    } else {
+                        alert("아이디 혹은 비밀번호가 틀립니다.")
+                        inputPw.value = ""
+                        inputId.value = ""
+                        return
+                    }
+                }
+            }
+
+            alert("아이디 혹은 비밀번호가 틀립니다.")
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q/A Write</title>
+</head>
+
+<link rel="stylesheet" href="resources/css/Common.css">
+<link rel="stylesheet" href="resources/css/QnACss.css">
+
+<body>
+
+    <div class="container">
+
+        <div class="modal">
+        </div>
+
+        <nav class="navigator">
+        </nav>
+
+        <section class="section">
+
+            <div class="section-title">
+                <h1>Q / A</h1>
+            </div>
+
+            <div class="session-content">
+                <table class="session-table">
+                    <colgroup>
+                        <col style="width: 130px">
+                        <col style="width: auto">
+                    </colgroup>
+                    <tbody class="table-body">
+                    <tr>
+                        <td>제목</td>
+                        <td>
+                            <input type="text" name="boardTitle" id="boardTitle">
+                        </td>
+                        <td>작성자</td>
+                        <td>
+                            <input type="text" name="boardWriter" id="boardWriter" readonly>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="board-Content">
+                <textarea name="boardContent" id="boardContent"></textarea>
+            </div>
+
+            <div class="board-footer">
+                <button id="listBtn">LIST</button>
+                <button id="writeBtn">WRITE</button>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+        </footer>
+
+    </div>
+
+    <script src="resources/script/Write.js"></script>
+
+    <script src="resources/script/Navigator.js"></script>
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <script src="resources/script/SearchRoad.js"></script>
+
+</body>
+</html>

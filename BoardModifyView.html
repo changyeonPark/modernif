@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOARD MODIFY</title>
+</head>
+
+<link rel="stylesheet" href="resources/css/Common.css">
+<link rel="stylesheet" href="resources/css/QnACss.css">
+
+<body>
+
+<div class="container">
+
+    <div class="modal">
+    </div>
+
+    <nav class="navigator">
+    </nav>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h1>BOARD MODIFY</h1>
+        </div>
+
+        <div class="session-content">
+            <table class="session-table">
+                <colgroup>
+                    <col style="width: 130px">
+                    <col style="width: auto">
+                </colgroup>
+                <tbody class="table-body">
+                <tr>
+                    <td>제목</td>
+                    <td>
+                        <input type="text" name="boardTitle" id="boardTitle">
+                    </td>
+                    <td>작성자</td>
+                    <td>
+                        <span name="boardWriter" id="boardWriter"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>작성일자</td>
+                    <td class="boardDate-td">
+                        <span name="boardDate" id="boardDate"></span>
+                    </td>
+                    <td>조회수</td>
+                    <td class="boardHit-td">
+                        <span name="boardHit" id="boardHit"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="board-Content">
+            <textarea name="boardContent" id="boardContent"></textarea>
+        </div>
+
+        <div class="board-footer">
+            <button id="listBtn">LIST</button>
+            <button id="modifyBtn" style="display: none;">MODIFY</button>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+    </footer>
+
+</div>
+
+<script>
+
+    const boardDetailNo = JSON.parse(sessionStorage.getItem("boardDetailNo"))
+    const boards = JSON.parse(localStorage.getItem("boards"))
+    const loginInfo = JSON.parse(sessionStorage.getItem("loginInfo"))
+
+
+    const modifyBtn = document.querySelector("#modifyBtn")
+    const boardTitle = document.querySelector("#boardTitle")
+    const boardWriter = document.querySelector("#boardWriter")
+    const boardDate = document.querySelector("#boardDate")
+    const boardHit = document.querySelector("#boardHit")
+    const boardContent = document.querySelector("#boardContent")
+
+    window.addEventListener("DOMContentLoaded", () => {
+
+        for (let i = 0; i < boards.length; i++) {
+            if (boards[i].boardNo === boardDetailNo){
+
+                boards[i].boardHit += 1
+
+                boardTitle.value = boards[i].boardTitle
+                boardWriter.textContent = boards[i].boardWriter
+                boardDate.textContent = boards[i].boardDate
+                boardHit.textContent = boards[i].boardHit
+                boardContent.textContent = boards[i].boardContent
+
+                if (loginInfo[0].loginId === boards[i].userId){
+                    modifyBtn.style.display = "block"
+                }
+            }
+        }
+
+        localStorage.setItem("boards", JSON.stringify(boards))
+
+    })
+
+
+
+    const listBtn = document.querySelector("#listBtn")
+
+    listBtn.addEventListener("click", () => {
+        console.log(history.back())
+    })
+
+    modifyBtn.addEventListener("click", () => {
+
+        const boards = JSON.parse(localStorage.getItem("boards"))
+        const nowDate = new Date();
+        const boardDate = `${nowDate.getFullYear()}-${("0"+nowDate.getMonth()).slice(-2)}-${("0"+nowDate.getDate()).slice(-2)} `
+            + `${("0"+nowDate.getHours()).slice(-2)}:${("0"+nowDate.getMinutes()).slice(-2)}:${("0"+nowDate.getSeconds()).slice(-2)}`
+
+        for (let i = 0; i < boards.length; i++) {
+            if (boards[i].boardNo === boardDetailNo){
+
+                boards[i].boardTitle = boardTitle.value
+                boards[i].boardContent = boardContent.value
+                boards[i].boardDate = boardDate
+            }
+        }
+
+        localStorage.setItem("boards", JSON.stringify(boards))
+
+        alert("게시글 수정 완료")
+
+        location.href = "Community.html"
+
+    })
+
+</script>
+
+<script src="resources/script/Navigator.js"></script>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script src="resources/script/SearchRoad.js"></script>
+
+</body>
+</html>

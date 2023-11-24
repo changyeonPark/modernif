@@ -1,0 +1,132 @@
+.session-content {
+    margin: auto;
+
+    width: 100%;
+}
+
+.board-footer {
+    margin: auto;
+
+    padding: 15px;
+
+    width: 100%;
+    border: 1px solid #dfdfdf;
+    border-top: 0px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: end;
+}
+
+.board-footer form {
+    height: 30px;
+}
+
+.board-form input {
+    height: 100%;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.board-select {
+    margin: 0 2px 0 0;
+    width: 72px;
+    height: 100%;
+}
+
+.board-footer button {
+    height: 30px;
+    width: 100px;
+    background-color: white;
+    border: 1px solid black;
+    margin-left: 20px;
+}
+
+.board-footer button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.session-content {
+    margin: auto;
+
+    width: 100%;
+}
+
+.session-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header{
+    text-align: center;
+
+    background-color: #fafafa;
+
+    font-size: 18px;
+    color: #555555;
+}
+
+.session-table td {
+    height: 18px;
+    padding: 15px 0;
+    border: 1px solid #dfdfdf;
+
+}
+
+.session-table td a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 17px;
+}
+
+.session-table td:nth-child(1){
+    width: 15%;
+    padding-left: 20px;
+    color: #555555;
+}
+
+.session-table td:nth-child(2){
+    width: 35%;
+    padding-left: 20px;
+}
+
+.session-table td:nth-child(3){
+    width: 15%;
+    padding-left: 20px;
+    color: #555555;
+}
+
+.session-table td:nth-child(4){
+    width: 35%;
+    padding-left: 20px;
+}
+
+.session-table input {
+    height: 100%;
+    width: 90%;
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+.board-Content {
+    margin: auto;
+    border: 1px solid #dfdfdf;
+    border-top: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.board-Content textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 0px;
+    padding: 40px;
+    height: 600px;
+    font-size: 18px;
+    resize: none;
+}
+
+.board-Content textarea:focus-visible{
+    outline-style: none;
+}

@@ -1,0 +1,134 @@
+.container {
+    width: 800px;
+    height: 600px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 2px solid #eee;
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 75%;
+    text-align: center;
+}
+
+.header p{
+    font-size: 80px;
+    font-weight: 1000;
+    color: #0077b5;
+}
+
+.body {
+    width: 75%;
+}
+
+.body > form {
+    width: 100%;
+}
+
+.userInfoHeader {
+    display: flex;
+    padding: 30px;
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+    color: #999;
+    align-items: center;
+}
+
+.userInfoHeader > div:nth-child(1){
+    width: 20%;
+    font-size: 13px;
+}
+
+.userInfoHeader > div:nth-child(2) {
+    width: 75%;
+}
+
+.userInfoHeader input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 32px;
+}
+
+.userInfoHeader p {
+    margin: 2px;
+    font-size: 12px;
+}
+
+.userInfoBody {
+    display: flex;
+    padding: 30px;
+    border-bottom: 1px solid #999;
+    color: #999;
+    align-items: center;
+}
+
+.userInfoBody > div:nth-child(1){
+    width: 20%;
+    font-size: 13px;
+}
+
+.userInfoBody > div:nth-child(2) {
+    width: 75%;
+}
+
+.userInfoBody input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 32px;
+}
+
+.userInfoBody button {
+    width: 20%;
+    box-sizing: border-box;
+    height: 30px;
+    margin-bottom: 7px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.userInfoBody button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.userInfoBody p {
+    margin: 2px;
+    font-size: 12px;
+    display: none;
+}
+
+.userInfoFooter {
+    width: 100%;
+}
+
+.userInfoFooter > button {
+    border: 1px solid #0077b5;
+    border-radius: 7px;
+
+    width: 100%;
+    background-color: #0077b5;
+    color: white;
+    font-size: 18px;
+    height: 50px;
+    margin: 50px 0;
+}
+
+.userInfoFooter > button:hover {
+    background-color: rgba(0, 119, 181, 0.85);
+    cursor: pointer;
+}
+
+.userInfoContent {
+    display: flex;
+}
