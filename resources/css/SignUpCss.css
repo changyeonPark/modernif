@@ -135,3 +135,18 @@
     background-color: rgba(0, 119, 181, 0.85);
     cursor: pointer;
 }
+
+.userIdDiv > button {
+    width: 20%;
+    box-sizing: border-box;
+    height: 30px;
+    margin-bottom: 7px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.userIdDiv > button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
