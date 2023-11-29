@@ -46,7 +46,11 @@ for (let i = 0; i < product.length; i++) {
     const priceTdEl = document.createElement("td")
     priceTdEl.textContent = prodPrice+"원"
 
-    trEl.append(checkboxTdEl, noTdEl, nameTdEl, categoryTdEl, priceTdEl)
+    /* 6번 컬럼 상품 등록 여부 */
+    const prodDelYnEl = document.createElement("td")
+    prodDelYnEl.textContent = prodDelYn
+
+    trEl.append(checkboxTdEl, noTdEl, nameTdEl, categoryTdEl, priceTdEl, prodDelYnEl)
 
     table.appendChild(trEl)
 
@@ -92,7 +96,11 @@ function addProductContent(product, i) {
     const priceTdEl = document.createElement("td")
     priceTdEl.textContent = prodPrice+"원"
 
-    trEl.append(checkboxTdEl, noTdEl, nameTdEl, categoryTdEl, priceTdEl)
+    /* 6번 컬럼 상품 등록 여부 */
+    const prodDelYnEl = document.createElement("td")
+    prodDelYnEl.textContent = prodDelYn
+
+    trEl.append(checkboxTdEl, noTdEl, nameTdEl, categoryTdEl, priceTdEl, prodDelYnEl)
 
     table.appendChild(trEl)
 }
@@ -147,4 +155,72 @@ resetBtn.addEventListener("click", () => {
     }
     registBoard()
     searchInput.value = ""
+})
+
+const checkAll = document.querySelector("input[name=prodCheckAll]")
+const prodCheckbox = document.querySelectorAll("input[name=prodCheck]")
+checkAll.addEventListener("click", () => {
+    if (checkAll.checked == false){
+        for (let i = 0; i < prodCheckbox.length; i++) {
+            prodCheckbox[i].checked = false
+        }
+    } else {
+        for (let i = 0; i < prodCheckbox.length; i++) {
+            prodCheckbox[i].checked = true
+        }
+    }
+})
+
+const unRegisterProdBtn = document.querySelector("#unRegisterProd")
+
+unRegisterProdBtn.addEventListener("click", () => {
+
+    const prodList = JSON.parse(localStorage.getItem("product"))
+
+    for (let i = 0; i < prodCheckbox.length; i++) {
+        if (prodCheckbox[i].checked == true){
+            let checkedProdNo = prodCheckbox[i].parentElement.nextSibling.textContent
+            for (let j = 0; j < prodList.length; j++) {
+                if (prodList[j].prodNo == checkedProdNo){
+                    if (prodList[j].prodDelYn === "Y"){
+                        prodCheckbox[i].focus()
+                        alert(prodList[j].prodNo + "번 상품은 등록되어 있지 않은 상태입니다.")
+                        return;
+                    } else {
+                        prodList[j].prodDelYn = "Y"
+                    }
+                }
+            }
+        }
+    }
+
+    localStorage.setItem("product", JSON.stringify(prodList))
+
+    location.href = location.href;
+
+})
+
+document.querySelector("#reRegisterProd").addEventListener("click", (e) => {
+    const prodList = JSON.parse(localStorage.getItem("product"))
+
+    for (let i = 0; i < prodCheckbox.length; i++) {
+        if (prodCheckbox[i].checked == true){
+            let checkedProdNo = prodCheckbox[i].parentElement.nextSibling.textContent
+            for (let j = 0; j < prodList.length; j++) {
+                if (prodList[j].prodNo == checkedProdNo){
+                    if (prodList[j].prodDelYn === "N"){
+                        prodCheckbox[i].focus()
+                        alert(prodList[j].prodNo + "번 상품은 등록되어 있는 상태입니다.")
+                        return;
+                    } else {
+                        prodList[i].prodDelYn = "N"
+                    }
+                }
+            }
+        }
+    }
+
+    localStorage.setItem("product", JSON.stringify(prodList))
+
+    location.href = location.href;
 })
