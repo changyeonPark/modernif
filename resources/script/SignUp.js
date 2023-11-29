@@ -11,7 +11,7 @@ const phoneNum = document.getElementsByName("phone[]")
 const inputMail = document.querySelector("#userEmail")
 
 // 아이디 정규 표현식
-const idCheck = /^[a-z0-9]{4,16}$/; 
+const idCheck = /^[a-z0-9]{4,16}$/;
 
 // 메일 형식 정규 표현식
 const mailCheck = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
@@ -20,7 +20,7 @@ let idFlag = true
 let pwFlag = true
 let rePwFlag = true
 let mailFlag = true
-let idDuplication;
+
 
 // 아이디 조건 체크
 inputId.addEventListener("keyup", () => {
@@ -80,38 +80,43 @@ let userPhoneNum = [];
 
 const idCheckBtn = document.querySelector("#idDuplicationCheck")
 
+let idDuplication;
 
 idCheckBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem("users"))
+    const users = JSON.parse(localStorage.getItem("users")) || []
+
+    if (users.length === 0) {
+        alert("사용 가능 한 아이디 입니다.")
+        idDuplication = true
+        return
+    }
 
     for (let i = 0; i < users.length; i++) {
         if (users[i].userId === inputId.value) {
             alert("사용중인 아이디 입니다. 다른 아이디를 입력해주세요.")
             inputId.value = ""
             inputId.focus()
-            idDuplication = false
             return
         }
     }
 
-    if (idDuplication === false || idDuplication !== "" || idDuplication !== null) {
-        alert("사용 가능 한 아이디 입니다.")
-        idDuplication = true
-    }
+    alert("사용 가능 한 아이디 입니다.")
+    idDuplication = true
+})
+
+const backBtn = document.querySelector("#backBtn")
+backBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    console.log(history.back())
 })
 
 /* 최종 submit */
 signUpBtn.addEventListener("click", (e) => {
     e.preventDefault()
 
-    if (idDuplication === "" || idDuplication === null) {
+    if (idDuplication !== false && idDuplication !== true) {
         alert("아이디 중복 체크를 해주세요.")
-        return
-    }
-
-    if (idDuplication === false) {
-        alert("사용 중인 아이디 입니다. 다른 아이디를 입력해주세요.")
         return
     }
 

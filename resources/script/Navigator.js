@@ -142,7 +142,12 @@ if (loginCheck[0].loginState) {
     myPageBtn.style.display = "inline-block"
     myPageBtn.style.position = "relative"
 
-    myPageBtn.innerHTML = `${loginCheck[0].userName}님<div class="dropdown-content"><a href="#" id="myProfile">My Profile</a><a href="#" id="logoutBtn">로그아웃</a></div>`
+    if (loginCheck[0].loginId === 'admin'){
+        myPageBtn.innerHTML = `${loginCheck[0].userName}님<div class="dropdown-content"><a href="#" id="myProfile">My Profile</a><a href="#" id="productBtn">상품 관리</a><a href="#" id="logoutBtn">로그아웃</a></div>`
+    } else {
+        myPageBtn.innerHTML = `${loginCheck[0].userName}님<div class="dropdown-content"><a href="#" id="myProfile">My Profile</a><a href="#" id="logoutBtn">로그아웃</a></div>`
+    }
+
 
 }
 
@@ -180,4 +185,8 @@ document.querySelector("#logoutBtn").addEventListener("click", () => {
     sessionStorage.setItem("loginInfo", JSON.stringify(loginCheck));
 
     location.href = "index.html"
+})
+
+document.querySelector("#productBtn").addEventListener("click", () => {
+    location.href = "ProductListView.html"
 })

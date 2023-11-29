@@ -44,6 +44,7 @@ writeBtn.addEventListener("click", () => {
 
 })
 
+
 function registBoard(){
 
     /* localStorage board 담을 그릇 */
@@ -57,7 +58,7 @@ function registBoard(){
         }
     }
 
-    boards.push( {"boardNo": boards.length+1, "boardTitle": boardTitle.value, "userId": userId, "boardWriter": boardWriter.value, "boardContent": boardContent.value, "boardDate": boardDate, "boardHit": 0} )
+    boards.push( {"boardNo": boards.length+1, "boardTitle": boardTitle.value, "userId": userId, "boardWriter": boardWriter.value, "boardContent": boardContent.value, "boardDate": boardDate, "boardHit": 0, "boardDelYn": "N"} )
 
     localStorage.setItem("boards", JSON.stringify(boards))
 }

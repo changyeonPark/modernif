@@ -28,90 +28,6 @@
         </div>
 
         <div class="productList">
-
-            <div class="card">
-                <div class="card-img">
-                    <a href="#"><img src="resources/image/image(1).gif" alt="" style="width: 100%"></a>
-                </div>
-                <div class="card-content">
-                    <ul>
-                        <li class="prod_name">
-                            <a href=""><span>페일 코듀로이 카고 스트링 팬츠</span></a>
-                        </li>
-                        <li class="prod_price">KRW 17,900</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">
-                    <a href="#"><img src="resources/image/image(2).gif" alt="" style="width: 100%"></a>
-                </div>
-                <div class="card-content">
-                    <ul>
-                        <li class="prod_name">
-                            <a href=""><span>1+1 페일 코듀로이 카고 스트링 팬츠</span></a>
-                        </li>
-                        <li class="prod_price">KRW 32,000</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">
-                    <a href="#"><img src="resources/image/image(3).jpg" alt="" style="width: 100%"></a>
-                </div>
-                <div class="card-content">
-                    <ul>
-                        <li class="prod_name">
-                            <a href=""><span>부클 알파카 라운드 니트</span></a>
-                        </li>
-                        <li class="prod_price">KRW 49,900</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">
-                    <a href="#"><img src="resources/image/image(4).jpg" alt="" style="width: 100%"></a>
-                </div>
-                <div class="card-content">
-                    <ul>
-                        <li class="prod_name">
-                            <a href=""><span>래리 울 라운드 니트</span></a>
-                        </li>
-                        <li class="prod_price">KRW 49,900</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">
-                    <a href="#"><img src="resources/image/image(5).jpg" alt="" style="width: 100%"></a>
-                </div>
-                <div class="card-content">
-                    <ul>
-                        <li class="prod_name">
-                            <a href=""><span>코이 캐시 라운드 니트</span></a>
-                        </li>
-                        <li class="prod_price">KRW 38,000</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">
-                    <a href="#"><img src="resources/image/image(6).gif" alt="" style="width: 100%"></a>
-                </div>
-                <div class="card-content">
-                    <ul>
-                        <li class="prod_name">
-                            <a href=""><span>비츠 앙고라 오버핏 니트</span></a>
-                        </li>
-                        <li class="prod_price">KRW 43,000</li>
-                    </ul>
-                </div>
-            </div>
         </div>
 
 
@@ -122,6 +38,79 @@
     </footer>
 
 </div>
+
+<script>
+    const cardParent = document.querySelector(".productList")
+
+    const product = JSON.parse(localStorage.getItem("product"))
+
+    for (let i = 0; i < product.length; i++) {
+        const prodNo = product[i].prodNo
+        const prodName = product[i].prodName
+        const prodPrice = product[i].prodPrice
+        const prodCategory = product[i].prodCategory
+        const mainImgUrl = product[i].mainImgUrl
+        const prodSize = product[i].prodSize /* 2중 배열임 */
+        const detailImgUrl = product[i].detailImgUrl /* 배열임 */
+        const prodDelYn = product[i].prodDelYn
+
+        if (prodCategory === "knit" && prodDelYn === "N"){
+            const cardDiv = document.createElement("div")
+            cardDiv.className = "card"
+
+            const cardImgDiv = document.createElement("div")
+            cardImgDiv.className = "card-img"
+
+            const cardImgParentA = document.createElement("a")
+            cardImgParentA.setAttribute("href", "ProductDetailView.html")
+
+            const mainImg = document.createElement("img")
+            mainImg.setAttribute("src", mainImgUrl)
+
+            cardImgParentA.appendChild(mainImg)
+            cardImgDiv.appendChild(cardImgParentA)
+
+            const cardContent = document.createElement("div")
+            cardContent.className = "card-content"
+
+            const cardContentUl = document.createElement("ul")
+
+            const prodNameUlLi = document.createElement("li")
+            prodNameUlLi.className = "prod_name"
+
+            const prodNameA = document.createElement("a")
+            prodNameA.setAttribute("href", "ProductDetailView.html")
+
+            const prodNameSpan = document.createElement("span")
+            prodNameSpan.textContent = prodName
+
+            prodNameA.appendChild(prodNameSpan)
+            prodNameUlLi.appendChild(prodNameA)
+
+            const prodPriceUlLi = document.createElement("li")
+            prodPriceUlLi.className = "prod_price"
+
+            prodPriceUlLi.textContent = "KRW " + prodPrice
+
+            cardContentUl.append(prodNameUlLi, prodPriceUlLi)
+            cardContent.append(cardContentUl)
+
+            cardDiv.append(cardImgDiv, cardContent)
+
+            cardParent.append(cardDiv)
+
+            prodNameA.addEventListener("click", () => {
+
+                sessionStorage.setItem("prodName", prodName)
+            })
+
+            cardImgParentA.addEventListener("click", () => {
+
+                sessionStorage.setItem("prodName", prodName)
+            })
+        }
+    }
+</script>
 
 <script src="resources/script/Navigator.js"></script>
 

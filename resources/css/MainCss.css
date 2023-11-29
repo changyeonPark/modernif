@@ -315,3 +315,7 @@
 .prod_price {
     padding-top: 10px;
 }
+
+.card-img > a > img {
+    width: 100%;
+}

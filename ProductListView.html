@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>모던이프 상품 관리</title>
+</head>
+
+<link rel="stylesheet" href="resources/css/MainCss.css">
+<link rel="stylesheet" href="resources/css/ProdListCss.css">
+
+<body>
+
+<div class="container">
+
+    <div class="modal">
+    </div>
+
+    <div class="navigator">
+    </div>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>상품 정보</h2>
+        </div>
+
+        <div class="prod-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" name="allCheck"></th>
+                        <th>No.</th>
+                        <th>Name.</th>
+                        <th>Category.</th>
+                        <th>Price.</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="board-footer">
+            <form class="board-form">
+                <select class="board-select">
+                    <option value="prodNo" selected>No</option>
+                    <option value="prodName">Name</option>
+                    <option value="prodCategory">Category</option>
+                </select>
+                <input type="text" name="prodSearch" id="prodSearch">
+                <button id="searchBtn">SEARCH</button>
+                <button id="resetBtn">RESET</button>
+            </form>
+            <div>
+                <button id="deleteProd">상품삭제</button>
+                <button id="registerProd">상품등록</button>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+    </footer>
+
+</div>
+
+<script src="resources/script/ProdList.js"></script>
+
+<script src="resources/script/Navigator.js"></script>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script src="resources/script/SearchRoad.js"></script>
+
+</body>
+</html>

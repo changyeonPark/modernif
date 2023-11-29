@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>모던이프 상품 등록</title>
+</head>
+
+<style>
+
+    .container {
+        width: 800px;
+
+        margin: 100px auto;
+        padding: 50px 50px 100px;
+        border: 2px solid #eee;
+        border-radius: 30px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header {
+        width: 75%;
+        text-align: center;
+    }
+
+    .header p {
+        font-size: 50px;
+        font-weight: 1000;
+        color: #555555;
+    }
+
+    .body {
+        width: 75%;
+    }
+
+    .body > form {
+        width: 100%;
+        border-top: 1px solid #999;
+    }
+
+    .product-info {
+        display: flex;
+        padding: 20px;
+        border-bottom: 1px solid #999;
+        color: #999;
+        align-items: center;
+    }
+
+    .product-info > div:nth-child(1) {
+        width: 20%;
+        font-size: 13px;
+    }
+
+    .product-info > div:nth-child(2) {
+        width: 80%;
+    }
+
+    .product-info input {
+        width: 100%;
+        box-sizing: border-box;
+        height: 32px;
+    }
+
+    .product-info select {
+        height: 32px;
+        width: 50%;
+    }
+
+    .prod-size {
+        font-size: 13px;
+    }
+
+    .prod-size input {
+        width: 12%;
+        margin-right: 15px;
+    }
+
+    select[name=size] {
+        height: 32px;
+        width: 15%;
+        margin-right: 15px;
+    }
+
+    .prod-size button {
+        width: 25px;
+        height: 21px;
+    }
+
+    .detail-img-url > input{
+        width: 84%;
+        margin-right: 14px;
+    }
+
+    .product-info-footer {
+        width: 100%;
+        display: flex;
+    }
+
+    .product-info-footer > button {
+        border: none;
+        width: 50%;
+        background-color: white;
+        color: black;
+        font-size: 18px;
+        height: 40px;
+        margin-top: 50px;
+        border: 1px solid #999;
+    }
+
+    .product-info-footer > button:hover{
+        background-color: black;
+        cursor: pointer;
+        color: white;
+    }
+
+    .product-info-footer > button:nth-child(1){
+        border-right: none;
+    }
+
+
+</style>
+
+<body>
+<div class="container">
+
+    <div class="header">
+        <p>상품 등록</p>
+    </div>
+
+    <input type="hidden" value=1 id="plusNum">
+    <input type="hidden" value=1 id="plusInput">
+
+    <div class="body">
+        <form name="product" method="POST">
+            <div class="product-info">
+                <div>
+                    상품 이름
+                </div>
+                <div class="prod-name">
+                    <input type="text" name="prodName" id="prodName" placeholder="상품명을 입력해주세요.">
+                </div>
+            </div>
+
+            <div class="product-info">
+                <div>
+                    상품 가격
+                </div>
+                <div class="prod-price">
+                    <input type="text" name="prodPrice" id="prodPrice" placeholder="가격을 입력해주세요.">
+                </div>
+            </div>
+
+            <div class="product-info">
+                <div>
+                    카테고리
+                </div>
+                <div class="prod-category">
+                    <select name="category" id="category">
+                        <option value="none" selected>---------</option>
+                        <option value="outer">OUTER</option>
+                        <option value="top">TOP</option>
+                        <option value="knit">KNIT</option>
+                        <option value="shirts">SHIRTS</option>
+                        <option value="bottom">BOTTOM</option>
+                        <option value="shoes">SHOES</option>
+                        <option value="acc">ACC</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <div>
+                    메인 이미지 (URL)
+                </div>
+                <div class="main-img-url">
+                    <input type="text" name="mainImgUrl" id="mainImgUrl" placeholder="상품 메인 이미지 주소를 입력해주세요.">
+                </div>
+            </div>
+
+            <div class="prod-size-list">
+                <div class="product-info plusDiv">
+                    <div>
+                        상품 사이즈
+                    </div>
+                    <div class="prod-size">
+                        <select name="size">
+                            <option value="none" selected>------------</option>
+                            <option value="free">FREE</option>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                            <option value="xl">XL</option>
+                            <option value="2xl">2XL</option>
+                            <option value="3xl">3XL</option>
+                        </select>
+                        어깨 <input type="text" name="prodShoulder">
+                        가슴 <input type="text" name="prodChest">
+                        총길이 <input type="text" name="prodTotalLength">
+
+                        <button name="sizePlusBtn" type="button" onclick="copyDiv()">&#9662;</button>
+                        <button name="sizeDelBtn" type="button" onclick="delDiv(this)">&#10005;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-img-list">
+                <div class="product-info plusInput">
+                    <div>
+                        상세 이미지 (URL)
+                    </div>
+                    <div class="detail-img-url">
+
+                        <input type="text" name="detailImgUrl" id="detailImgUrl" placeholder="상세 페이지 이미지 주소를 입력해주세요.">
+                        <button name="urlPlusBtn" type="button" onclick="copyInput()">&#9662;</button>
+                        <button name="urlDelBtn" type="button" onclick="delInput(this)">&#10005;</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="product-info-footer">
+                <button id="registerBtn" type="button">REGISTER</button>
+                <button id="backBtn" type="button">BACK</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+    document.querySelector("#registerBtn").addEventListener("click", () => {
+
+        const prodName = document.querySelector("#prodName")
+        const prodPrice = document.querySelector("#prodPrice")
+        const prodCategory = document.querySelector("select[name=category]")
+        const mainImgUrl = document.querySelector("#mainImgUrl")
+        const sizes = document.querySelectorAll(".prod-size-list > div")
+
+        if (prodName.value === ""){
+            prodName.focus()
+            return
+        }
+
+        if (prodPrice.value === ""){
+            prodPrice.focus()
+            return
+        }
+
+        if (prodCategory.value === "none"){
+            prodCategory.focus()
+            return
+        }
+
+        if (mainImgUrl.value === ""){
+            mainImgUrl.focus()
+            return
+        }
+
+        let prodSize = []
+
+        for (let i = 0; i < sizes.length; i++) {
+            let sizeList = []
+
+            let selectEl = sizes[i].querySelector("select[name=size]")
+            let prodShoulder = sizes[i].querySelector("input[name=prodShoulder]")
+            let prodChest = sizes[i].querySelector("input[name=prodChest]")
+            let prodTotalLength = sizes[i].querySelector("input[name=prodTotalLength]")
+
+            if (selectEl.value === "none"){
+                selectEl.focus()
+                return
+            }
+
+            if (prodShoulder.value === ""){
+                prodShoulder.focus()
+                return
+            }
+
+            if (prodChest.value === ""){
+                prodChest.focus()
+                return
+            }
+
+            if (prodTotalLength.value === ""){
+                prodTotalLength.focus()
+                return
+            }
+
+            sizeList.push(selectEl.value)
+            sizeList.push(prodShoulder.value)
+            sizeList.push(prodChest.value)
+            sizeList.push(prodTotalLength.value)
+
+            prodSize.push(sizeList)
+
+
+        }
+
+
+        const detailImgUrls = document.querySelectorAll(".detail-img-list > div")
+
+        let detailImgUrl = []
+
+        for (let i = 0; i < detailImgUrls.length; i++) {
+
+            const detailImgUrlInput = detailImgUrls[i].querySelector("#detailImgUrl")
+
+            if (detailImgUrlInput.value === ""){
+                detailImgUrlInput.focus()
+                return
+            }
+
+            detailImgUrl.push(detailImgUrlInput.value)
+
+        }
+
+        let prodList = JSON.parse(localStorage.getItem("product")) || []
+
+        prodList.push({
+            "prodNo": prodList.length+1,
+            "prodName": prodName.value,
+            "prodPrice": prodPrice.value,
+            "prodCategory": prodCategory.value,
+            "mainImgUrl": mainImgUrl.value,
+            "prodSize": prodSize,
+            "detailImgUrl": detailImgUrl,
+            "prodDelYn": "N"
+        })
+
+        localStorage.setItem("product", JSON.stringify(prodList))
+
+        alert("상품 등록 성공")
+
+        location.href = "ProductListView.html"
+
+    })
+    function copyDiv() {
+
+        const parentDiv = document.querySelector(".prod-size-list")
+        const copyDiv = document.querySelector(".plusDiv").cloneNode(true)
+        const hiddenInput = document.querySelector("#plusNum")
+
+        const newDiv = copyDiv
+
+        let className = "plusDiv"
+        let hiddenInputVal = hiddenInput.value
+        let changeClassName = className + hiddenInputVal
+
+        newDiv.classList.replace("plusDiv", changeClassName)
+
+        parentDiv.append(newDiv)
+
+        const test = document.querySelectorAll(`.${changeClassName} input[type=text]`)
+
+        test.forEach((el) => {
+            el.value = ""
+        })
+
+        hiddenInput.value = parseInt(hiddenInput.value) + 1
+
+        // const test1 = document.querySelectorAll(".prod-size-list > div")
+        // test1.forEach( el => {
+        //     console.log(el)
+        // })
+    }
+
+    function delDiv(el) {
+
+        let parentEl = el.parentElement.parentElement.className
+        let className = parentEl.split(" ")[1]
+        if (className === "plusDiv") {
+            return
+        } else {
+            console.log(className)
+            document.querySelector(`.${className}`).remove()
+        }
+
+    }
+
+    function copyInput() {
+        const parentDiv = document.querySelector(".detail-img-list")
+        const copyDiv = document.querySelector(".plusInput").cloneNode(true)
+        const hiddenInput = document.querySelector("#plusInput")
+
+        const newDiv = copyDiv
+
+        let className = "plusInput"
+        let hiddenInputVal = hiddenInput.value
+        let changeClassName = className + hiddenInputVal
+
+        newDiv.classList.replace("plusInput", changeClassName)
+
+        parentDiv.append(newDiv)
+
+        const test = document.querySelector(`.${changeClassName} input[type=text]`)
+
+        test.value = ""
+
+        hiddenInput.value = parseInt(hiddenInput.value) + 1
+    }
+
+    function delInput(el) {
+
+        let parentEl = el.parentElement.parentElement.className
+        let className = parentEl.split(" ")[1]
+        if (className === "plusInput") {
+            return
+        } else {
+            console.log(className)
+            document.querySelector(`.${className}`).remove()
+        }
+    }
+
+    document.querySelector("#backBtn").addEventListener("click", (e) => {
+        e.preventDefault()
+        history.back()
+    })
+
+
+</script>
+
+</body>
+</html>

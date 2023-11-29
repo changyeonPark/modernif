@@ -1,0 +1,89 @@
+.prod-list {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.prod-list > table {
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+table th, td {
+    border: 1px solid #dfdfdf;
+    border-bottom: none;
+    height: 45px;
+    text-align: center;
+}
+
+table th:nth-child(1), td:nth-child(1) {
+    width: 5%;
+}
+
+table th:nth-child(2), td:nth-child(2) {
+    width: 10%;
+}
+
+table th:nth-child(3), td:nth-child(3) {
+    width: 40%;
+    padding-left: 50px;
+    text-align: start;
+}
+
+table th:nth-child(3), td:nth-child(3) > a {
+    color: black;
+    text-decoration: none;
+}
+
+table th:nth-child(4), td:nth-child(4) {
+    width: 20%;
+}
+
+table th:nth-child(5), td:nth-child(5) {
+    width: 15%;
+}
+
+.board-footer {
+    margin: auto;
+
+    padding: 15px;
+
+    width: 80%;
+    border: 1px solid #dfdfdf;
+    border-top: 0px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-footer form {
+    height: 30px;
+}
+
+.board-form input {
+    height: 100%;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.board-select {
+    margin: 0 2px 0 0;
+    width: 80px;
+    height: 100%;
+}
+
+.board-footer button {
+    height: 30px;
+    width: 100px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.board-footer button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

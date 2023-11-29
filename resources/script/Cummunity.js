@@ -1,5 +1,5 @@
 document.querySelector("#writeBtn").addEventListener("click", () => {
-    location.href = "../../QnAWriteView.html"
+    location.href = "QnAWriteView.html"
 })
 
 
@@ -34,41 +34,30 @@ function addBoardContent(boards, i) {
 
     const boardTitleEla = document.querySelectorAll("a[name=boardTitleEla]")
     let boardDetailNo = 0
-    boardTitleEla.forEach( el => {
-        el.addEventListener("click", (e) => {
-            const boards = JSON.parse(localStorage.getItem("boards"))
-            for (let i = 0; i < boards.length; i++) {
-                if (boards[i].boardTitle === el.textContent){
+    boardTitleEla.forEach(el => {
+        el.addEventListener("click", () => {
 
-                    boardDetailNo = boards[i].boardNo
+            const parentEl = el.parentElement.previousElementSibling.textContent
 
-                    sessionStorage.setItem("boardDetailNo", JSON.stringify(boardDetailNo))
-                    location.href = "BoardDetailView.html"
-                    return
-                }
-            }
+            boardDetailNo = parentEl
+            console.log(boardDetailNo)
 
+            sessionStorage.setItem("boardDetailNo", boardDetailNo)
+            location.href = "BoardDetailView.html"
+            return
         })
     })
-
 }
 
-
-
-
-
-
-
-
-function registBoard(){
+function registBoard() {
 
     const boards = JSON.parse(localStorage.getItem("boards"))
 
     for (let i = 0; i < boards.length; i++) {
-        addBoardContent(boards, i);
-
+        if (boards[i].boardDelYn === "N") {
+            addBoardContent(boards, i);
+        }
     }
-
 }
 
 const searchBtn = document.querySelector("#searchBtn")      /* 게시글 검색 버튼 */
@@ -80,32 +69,32 @@ searchBtn.addEventListener("click", (e) => {
 
     const boards = JSON.parse(localStorage.getItem("boards"))
 
-    for (let i = tableBody.children.length; i > 0 ; i--) {
+    for (let i = tableBody.children.length; i > 0; i--) {
         tableBody.childNodes[i].remove()
     }
 
     let optionVal = ""
     for (let i = 0; i < options.length; i++) {
-        if (options[i].selected){
+        if (options[i].selected) {
             optionVal = options[i].value
         }
     }
 
-    if (optionVal === "title"){
+    if (optionVal === "title") {
         for (let i = 0; i < boards.length; i++) {
-            if (boards[i].boardTitle.includes(searchInput.value)){
+            if (boards[i].boardTitle.includes(searchInput.value)) {
                 addBoardContent(boards, i);
             }
         }
-    } else if (optionVal === "content"){
+    } else if (optionVal === "content") {
         for (let i = 0; i < boards.length; i++) {
-            if (boards[i].boardContent.includes(searchInput.value)){
+            if (boards[i].boardContent.includes(searchInput.value)) {
                 addBoardContent(boards, i);
             }
         }
     } else {
         for (let i = 0; i < boards.length; i++) {
-            if (boards[i].boardWriter.includes(searchInput.value)){
+            if (boards[i].boardWriter.includes(searchInput.value)) {
                 addBoardContent(boards, i);
             }
         }
@@ -115,7 +104,7 @@ searchBtn.addEventListener("click", (e) => {
 const resetBtn = document.querySelector("#resetBtn")
 
 resetBtn.addEventListener("click", () => {
-    for (let i = tableBody.children.length; i > 0 ; i--) {
+    for (let i = tableBody.children.length; i > 0; i--) {
         tableBody.childNodes[i].remove()
     }
     registBoard()

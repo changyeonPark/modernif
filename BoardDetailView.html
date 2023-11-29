@@ -128,9 +128,13 @@
         if (confirm("게시글을 정말 삭제 하시겠습니까?")) {
             const boards = JSON.parse(localStorage.getItem("boards"))
 
-            temp = boards.filter(item => item.boardNo !== boardDetailNo)
+            for (let i = 0; i < boards.length; i++) {
+                if (boards[i].boardNo === boardDetailNo){
+                    boards[i].boardDelYn = "Y"
+                }
+            }
 
-            localStorage.setItem("boards", JSON.stringify(temp));
+            localStorage.setItem("boards", JSON.stringify(boards));
 
             alert("게시글을 삭제 하였습니다.")
 

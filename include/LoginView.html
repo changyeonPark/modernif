@@ -39,6 +39,7 @@
 
                 <div class="userInfoFooter">
                     <button id="loginBtn">LOGIN</button>
+                    <button id="backBtn">BACK</button>
                 </div>
             </form>
         </div>
@@ -48,9 +49,15 @@
         const inputId = document.querySelector("#userId")
         const inputPw = document.querySelector("#userPw")
         const loginBtn = document.querySelector("#loginBtn")
+        const backBtn = document.querySelector("#backBtn")
 
         let loginState = false
         let loginInfo = []
+
+        backBtn.addEventListener("click", (e) => {
+            e.preventDefault()
+            history.back()
+        })
 
         loginBtn.addEventListener("click", (e) => {
             e.preventDefault()
