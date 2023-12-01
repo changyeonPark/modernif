@@ -57,6 +57,10 @@
     justify-content: space-evenly;
 }
 
+.dropdown-content > a > img {
+    height: 18px;
+}
+
 .nav-menu > a {
     text-decoration: none;
     color: black;

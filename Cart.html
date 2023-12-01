@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CART</title>
+</head>
+
+<link rel="stylesheet" href="resources/css/MainCss.css">
+
+<style>
+    .section-content {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .cart-table th {
+        height: 18px;
+        padding: 15px 0;
+        border: 1px solid #dfdfdf;
+        background-color: #fafafa;
+        color: #555555;
+    }
+
+    .cart-table > tbody > tr > td{
+        height: 120px;
+        border: 1px solid #dfdfdf;
+        text-align: center;
+        padding: 9px 0px;
+    }
+
+    .cart-table p {
+        margin: 0px;
+    }
+
+    tbody {
+        font-size: 13px;
+    }
+
+    /* 카트 테이블 체크박스 */
+    .cart-table th:nth-child(1), td:nth-child(1){
+        width: 5%;
+    }
+
+    /* 카트 테이블 상품 이미지 */
+    .cart-table th:nth-child(2), td:nth-child(2){
+        width: 15%;
+    }
+
+    /* 카트 테이블 상품 정보 */
+    .cart-table th:nth-child(3), td:nth-child(3){
+        width: 40%;
+    }
+
+    .cart-table td:nth-child(3) {
+        padding-left: 15px;
+        text-align: start;
+    }
+
+    .cart-table td:nth-child(3) > p {
+        padding: 3px 0;
+    }
+
+    /* 카트 테이블 상품 가격 */
+    .cart-table th:nth-child(4), td:nth-child(4){
+        width: 10%;
+    }
+
+    /* 카트 테이블 상품 수량 */
+    .cart-table th:nth-child(5), td:nth-child(5){
+        width: 10%;
+    }
+
+    /* 카트 테이블 총 가격 */
+    .cart-table th:nth-child(6), td:nth-child(6){
+        width: 10%;
+    }
+
+    /* 카트 테이블 선택 사항 */
+    .cart-table th:nth-child(6), td:nth-child(6){
+        width: 10%;
+    }
+
+    .section-content-footer {
+        margin: auto;
+
+        padding: 15px;
+
+        width: 80%;
+        border: 1px solid #dfdfdf;
+        border-top: 0px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .section-content-footer > p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .section-footer {
+        width: 80%;
+        margin: auto;
+    }
+
+    .section-footer-div {
+        margin: 50px auto;
+        border: 1px solid #777;
+    }
+
+    .section-footer-table {
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .section-footer-table tr {
+        height: 50px;
+    }
+
+    .section-footer-table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .section-footer-table tr:nth-child(1){
+        border-bottom: 1px solid #dfdfdf;
+        background-color: #fafafa;
+    }
+
+    .section-footer-table td:nth-child(1){
+        width: 25%;
+        border-right: 1px solid #dfdfdf;
+    }
+
+    .section-footer-table td:nth-child(2){
+        width: 25%;
+        border-right: 1px solid #dfdfdf;
+    }
+
+    .section-footer-table td:nth-child(3){
+        width: 50%;
+    }
+
+    .section-footer-button {
+        margin: 50px auto;
+        width: 40%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .section-footer-button > button {
+        width: 200px;
+        height: 40px;
+        background-color: white;
+        border: 1px solid #999;
+    }
+
+    .section-footer-button > button:hover {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+    .section-content button {
+        background-color: white;
+        border: 1px solid #999;
+        height: 25px;
+    }
+
+    .section-content button:hover {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+    .section-footer-order-help {
+        border: 1px solid #dfdfdf;
+    }
+
+    .section-footer-order-help > div:nth-child(1) {
+        height: 18px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        color: #555;
+        border-bottom: 1px solid #dfdfdf;
+    }
+
+    .section-footer-order-help > div:nth-child(2) {
+        padding: 10px;
+        align-items: center;
+        color: #555;
+    }
+
+    .section-footer-order-help ul {
+        align-items: center;
+    }
+
+    .section-footer-order-help li {
+        padding: 0 0 0 13px;
+        background: url("https://img.echosting.cafe24.com/skin/base/common/ico_dash.gif") no-repeat 0 7px;
+        list-style: none;
+        font-size: 13px;
+    }
+
+
+
+
+    .prodCnt-div {
+        height: 26px;
+        margin: auto;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .prodCnt-div > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .prodCnt-div > div:nth-child(1){
+        width: 70%;
+    }
+    .prodCnt-div > div:nth-child(2){
+        width: 30%;
+    }
+
+    .prodCnt-input {
+        height: 100%;
+    }
+
+    .prodCnt-input > input {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .prodCnt-button {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .prodCnt-button > a {
+        height: 50%;
+        display: flex;
+    }
+
+    .prodCnt-button > a:hover {
+        cursor: pointer;
+    }
+
+</style>
+
+<body>
+
+    <div class="container">
+
+        <div class="modal">
+        </div>
+
+        <div class="navigator">
+        </div>
+
+        <section class="section">
+
+            <div class="section-title">
+                <h2>CART</h2>
+            </div>
+
+            <div class="section-content">
+                <table class="cart-table">
+                    <thead>
+                        <th><input type="checkbox" id="allCheck"></th>
+                        <th>IMAGE.</th>
+                        <th>PRODUCT.</th>
+                        <th>PRICE.</th>
+                        <th>CNT.</th>
+                        <th>TOTAL.</th>
+                        <th>CHOICE.</th>
+                    </thead>
+                    <tbody id="firstBody">
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-content-footer">
+                <p name="default">[기본배송]</p>
+                <p name="totalPrice">합계 : KRW 0</p>
+            </div>
+
+            <div class="section-footer">
+
+                <div class="section-footer-div">
+                    <table class="section-footer-table">
+                        <tbody>
+                            <tr>
+                                <td>총 상품금액</td>
+                                <td>총 배송비</td>
+                                <td>결제예정금액</td>
+                            </tr>
+                            <tr>
+                                <td id="prodTotalPrice">KRW 0</td>
+                                <td id="deliveryPrice">+ KRW 0</td>
+                                <td id="finalTotalPrice">= KRW 0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-footer-button">
+                    <button id="allProdBuyBtn">전체상품주문</button>
+                    <button id="selectProdBuyBtn">선택상품주문</button>
+                </div>
+
+                <div class="section-footer-order-help">
+                    <div style="font-size: 13px">
+                        이용안내
+                    </div>
+                    <div>
+                        <h4 style="font-size: 12px">장바구니 이용안내</h4>
+                        <ul>
+                            <li>해외배송 상품과 국내배송 상품은 함께 결제하실 수 없으니 장바구니 별로 따로 결제해 주시기 바랍니다.</li>
+                            <li>해외배송 가능 상품의 경우 국내배송 장바구니에 담았다가 해외배송 장바구니로 이동하여 결제하실 수 있습니다.</li>
+                            <li>선택하신 상품의 수량을 변경하시려면 수량변경 후 [변경] 버튼을 누르시면 됩니다.</li>
+                            <li>[쇼핑계속하기] 버튼을 누르시면 쇼핑을 계속 하실 수 있습니다.</li>
+                            <li>장바구니와 관심상품을 이용하여 원하시는 상품만 주문하거나 관심상품으로 등록하실 수 있습니다.</li>
+                            <li>파일첨부 옵션은 동일상품을 장바구니에 추가할 경우 마지막에 업로드 한 파일로 교체됩니다.</li>
+                        </ul>
+                        <h4 style="font-size: 12px">무이자할부 이용안내</h4>
+                        <ul>
+                            <li>상품별 무이자할부 혜택을 받으시려면 무이자할부 상품만 선택하여 [주문하기] 버튼을 눌러 주문/결제 하시면 됩니다.</li>
+                            <li>[전체 상품 주문] 버튼을 누르시면 장바구니의 구분없이 선택된 모든 상품에 대한 주문/결제가 이루어집니다.</li>
+                            <li>단, 전체 상품을 주문/결제하실 경우, 상품별 무이자할부 혜택을 받으실 수 없습니다.</li>
+                        </ul>
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer class="footer">
+        </footer>
+
+    </div>
+
+<script>
+
+    window.addEventListener("DOMContentLoaded", ()=> {
+        const cart = JSON.parse(localStorage.getItem("cart"))
+        for (let i = 0; i < cart.length; i++) {
+            addProdList(cart, i)
+        }
+        sectionContentTotalPrice()
+    })
+
+    function addProdList(cart, i){
+
+        const trEl = document.createElement("tr")
+
+        const tdEl1 = document.createElement("td")
+        const checkboxInput = document.createElement("input")
+        checkboxInput.setAttribute("type", "checkbox")
+        checkboxInput.setAttribute("name", "itemCheck")
+        tdEl1.appendChild(checkboxInput)
+
+        const tdEl2 = document.createElement("td")
+        const mainImgEl = document.createElement("img")
+        mainImgEl.setAttribute("src", cart[i].prodImg)
+        mainImgEl.style.height = "100%"
+        tdEl2.appendChild(mainImgEl)
+
+        const tdEl3 = document.createElement("td")
+        const namePEl = document.createElement("p")
+        const optionPEl = document.createElement("p")
+        namePEl.textContent = cart[i].prodName
+        optionPEl.textContent = cart[i].selectOption
+        tdEl3.append(namePEl, optionPEl)
+
+        const tdEl4 = document.createElement("td")
+        const pricePEl = document.createElement("p")
+        pricePEl.textContent = "KRW "+ parseInt(cart[i].prodPrice).toLocaleString('ko-KR')
+        tdEl4.appendChild(pricePEl)
+
+        const tdEl5 = document.createElement("td")
+
+        const prodCntDiv = document.createElement("div")
+        prodCntDiv.className = "prodCnt-div"
+
+        /* prodCntDiv 에 넣어야 할 1아이템 */
+        const prodCntInputDiv = document.createElement("div")
+        prodCntInputDiv.className = "prodCnt-input"
+
+        const cntInput = document.createElement("input")
+        cntInput.setAttribute("type", "text")
+        cntInput.setAttribute("name", "prodCntInput")
+        cntInput.value = cart[i].cnt
+
+        prodCntInputDiv.appendChild(cntInput)
+
+
+        /* prodCntDiv 에 넣어야 할 2아이템 */
+        const cntDiv = document.createElement("div")
+        cntDiv.className = "prodCnt-button"
+
+        const plusImg = document.createElement("img")
+        plusImg.setAttribute("src",
+            "https://img.echosting.cafe24.com/design/skin/default/product/btn_count_up.gif")
+
+        const plusAEl = document.createElement("a")
+        plusAEl.className = "plusCount"
+        plusAEl.appendChild(plusImg)
+
+        const minusImg = document.createElement("img")
+        minusImg.setAttribute("src",
+            "https://img.echosting.cafe24.com/design/skin/default/product/btn_count_down.gif")
+
+        const minusAEl = document.createElement("a")
+        minusAEl.className = "minusCount"
+        minusAEl.appendChild(minusImg)
+
+        cntDiv.append(plusAEl, minusAEl)
+
+        prodCntDiv.append(prodCntInputDiv, cntDiv)
+
+        tdEl5.appendChild(prodCntDiv)
+
+        const tdEl6 = document.createElement("td")
+        tdEl6.setAttribute("name", "itemTotalPrice")
+        tdEl6.textContent = "KRW " + (parseInt(cart[i].prodPrice) * parseInt(cart[i].cnt)).toLocaleString("ko-KR")
+
+        const tdEl7 = document.createElement("td")
+        const buyBtn = document.createElement("button")
+        const delBtn = document.createElement("button")
+
+        buyBtn.setAttribute("name", "buyBtn")
+        buyBtn.textContent = "구매"
+        delBtn.setAttribute("name", "delBtn")
+        delBtn.textContent = "삭제"
+
+        tdEl7.append(buyBtn, delBtn)
+
+        trEl.append(tdEl1, tdEl2, tdEl3, tdEl4, tdEl5, tdEl6, tdEl7)
+
+        document.querySelector("tbody").append(trEl)
+    }
+
+    function sectionContentTotalPrice(){
+        const tbodyTr = document.querySelectorAll("#firstBody > tr")
+
+        console.log(tbodyTr)
+        let result = 0;
+
+        for (let i = 0; i < tbodyTr.length; i++) {
+            const priceEl = tbodyTr[i].querySelector("td[name=itemTotalPrice]")
+            console.log('el: ', priceEl)
+            const priceElReplace = priceEl.innerText.replace(",", "")
+            console.log(priceElReplace)
+            const itemTotalPrice = priceElReplace.replace("KRW ", "")
+            console.log(itemTotalPrice)
+
+            result += parseInt(itemTotalPrice)
+        }
+
+        const totalPrice = document.querySelector("p[name=totalPrice]")
+        totalPrice.textContent = "합계 : KRW " + result.toLocaleString("ko-KR")
+
+        const prodTotalPrice = document.querySelector("#prodTotalPrice")
+        prodTotalPrice.textContent = "KRW " + result.toLocaleString("ko-KR")
+
+        const finalTotalPrice = document.querySelector("#finalTotalPrice")
+        finalTotalPrice.textContent = "= KRW " + result.toLocaleString("ko-KR")
+    }
+
+
+
+
+
+
+
+
+</script>
+
+<script src="resources/script/Navigator.js"></script>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script src="resources/script/SearchRoad.js"></script>
+
+</body>
+</html>

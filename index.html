@@ -60,11 +60,30 @@
 
 <script>
 
-    // 로컬스토리지에 있는 product를 가져와서 이제 데이터를 뿌려주자.
+    window.addEventListener("DOMContentLoaded", () => {
+        localStorage.removeItem("product")
+
+        const product = JSON.parse(localStorage.getItem("product")) || []
+
+        product.push({
+            "prodNo":1,"prodName":"프렌 기획 숏패딩","prodPrice":"49,900","prodCategory":"outer","mainImgUrl":"https://modernif.co.kr/web/product/tiny/202210/c787ae81f8ee6b2f15d3b39b77b8ea60.jpg","prodSize":[["m","50","60","65"],["l","52","62","67"]],"detailImgUrl":["https://modernif.co.kr/web/2022_10/2022_10_26_7_1.jpg","https://modernif.co.kr/web/2022_10/2022_10_26_7_2.jpg","https://modernif.co.kr/web/2022_10/2022_10_26_1d.jpg"],"prodDelYn":"N","color":["Biege","Gray","Purple","Khaki","Charoal","Black"]},{
+            "prodNo":2,"prodName":"베스트웰 패딩 조끼","prodPrice":"66,000","prodCategory":"outer","mainImgUrl":"https://modernif.co.kr/web/product/tiny/202311/0b9d6a790332b3dbb44a118a4e38aee7.gif","prodSize":[["free","51","66","62"]],"detailImgUrl":["https://modernif.co.kr/web/2023_11/2023_11_24_1_1.jpg","https://modernif.co.kr/web/2023_11/2023_11_24_1_2.jpg","https://modernif.co.kr/web/2023_11/2023_11_24_1d.jpg"],"prodDelYn":"N","color":["Biege","Gray","Charcoal","Black"]},{
+            "prodNo":3,"prodName":"베러 슬릿 절개 니트","prodPrice":"49,900","prodCategory":"knit","mainImgUrl":"https://modernif.co.kr/web/product/tiny/202311/6fb77b8516ed3faf744dc64b615ccaba.gif","prodSize":[["m","54","58","71"],["l","56","60","73"]],"detailImgUrl":["https://modernif.co.kr/web/2023_11/2023_11_22_2_1.jpg","https://modernif.co.kr/web/2023_11/2023_11_22_2_2.jpg","https://modernif.co.kr/web/2023_11/2023_11_22_2d_1r.jpg","https://modernif.co.kr/web/2023_11/2023_11_22_2d_2.jpg"],"prodDelYn":"N","color":["Ivory","Oatmeal","Gray","Magenta","Deep Green","Black"]},{
+            "prodNo":4,"prodName":"니스 모헤어 단가라 니트","prodPrice":"55,000","prodCategory":"knit","mainImgUrl":"https://modernif.co.kr/web/product/tiny/202311/0faae42b03bc8920afb48ef7416a116a.gif","prodSize":[["free","63","68","67"]],"detailImgUrl":["https://modernif.co.kr/web/2023_11/2023_11_17_4_1.jpg","https://modernif.co.kr/web/2023_11/2023_11_17_4_2.jpg","https://modernif.co.kr/web/2023_11/2023_11_17_4_3.jpg","https://modernif.co.kr/web/2023_11/2023_11_17_4d_1.jpg","https://modernif.co.kr/web/2023_11/2023_11_17_4d_2.jpg"],"prodDelYn":"N","color":["Ivory","Red","Navy","Black"]},{
+            "prodNo":5,"prodName":"베이직 트임 긴팔 티셔츠","prodPrice":"17,000","prodCategory":"top","mainImgUrl":"https://modernif.co.kr/web/product/tiny/202204/079e6ccedab950eda274b658f156aaae.jpg","prodSize":[["m","50","52","71"],["l","58","58","77"]],"detailImgUrl":["https://modernif.co.kr/web/upload/top/2022_04_09_3.jpg","https://modernif.co.kr/web/upload/top/2022_04_09_3d.jpg"],"prodDelYn":"N","color":["White","Gray","Khaki","Navy","Black"]},{
+            "prodNo":6,"prodName":" 빈티지 스포츠 기모 후드","prodPrice":"49,900","prodCategory":"top","mainImgUrl":"https://modernif.co.kr/web/product/tiny/202311/37222ef424f6978859e6aae3cfd4b687.gif","prodSize":[["free","62","66","68"]],"detailImgUrl":["https://modernif.co.kr/web/2023_11/2023_11_17_1_1.jpg","https://modernif.co.kr/web/2023_11/2023_11_17_1_2.jpg","https://modernif.co.kr/web/2023_11/2023_11_17_1_3.jpg","https://modernif.co.kr/web/2023_11/2023_11_17_1d.jpg"],"prodDelYn":"N","color":["White Melange","Gray","Black"]},{
+            "prodNo":7,"prodName":"레타 옥스포드 셔츠","prodPrice":"38,900","prodCategory":"shirts","mainImgUrl":"https://modernif.co.kr/web/product/tiny/202203/4f85257732774981d5d8a0e7c4a1c69c.jpg","prodSize":[["m","60","63","77"],["l","62","65","79"],["xl","64","68","81"]],"detailImgUrl":["https://modernif.co.kr/web/upload/shirts/2022_03_23_1r.jpg","https://modernif.co.kr/web/2023_03/2023_03_24_3.jpg","https://modernif.co.kr/web/upload/shirts/2022_03_23_3d.jpg"],"prodDelYn":"N","color":["White","Sora","Gray"]},{
+            "prodNo":8,"prodName":"피아 세미 와이드 데님팬츠","prodPrice":"42,000","prodCategory":"bottom","mainImgUrl":"https://modernif.co.kr/web/product/tiny/202302/7feaeaa46ec02288504e609b090e54d2.jpg","prodSize":[["s","37","31","103"],["m","39","32","104"],["l","41","33","105"],["xl","43","34","106"]],"detailImgUrl":["https://modernif.co.kr/web/2023_05/2023_02_24_1r_1.jpg","https://modernif.co.kr/web/2023_02/2023_02_24_1_2.jpg","https://modernif.co.kr/web/2023_02/2023_02_24_1d.jpg"],"prodDelYn":"N","color":["연청","중청"]
+        })
+
+        localStorage.setItem("product", JSON.stringify(product))
+    })
 
     const cardParent = document.querySelector(".productList")
 
     const product = JSON.parse(localStorage.getItem("product"))
+
+    product.reverse()
 
     for (let i = 0; i < product.length; i++) {
         const prodNo = product[i].prodNo

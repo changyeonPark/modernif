@@ -143,7 +143,7 @@ if (loginCheck[0].loginState) {
     myPageBtn.style.position = "relative"
 
     if (loginCheck[0].loginId === 'admin'){
-        myPageBtn.innerHTML = `${loginCheck[0].userName}님<div class="dropdown-content"><a href="#" id="myProfile">My Profile</a><a href="#" id="productBtn">상품 관리</a><a href="#" id="logoutBtn">로그아웃</a></div>`
+        myPageBtn.innerHTML = `${loginCheck[0].userName}님<div class="dropdown-content"><a href="#" id="cartBtn">CART  <img src="https://modernif.co.kr/web/upload/top_ico4.png"></a><a href="#" id="myProfile">My Profile</a><a href="#" id="productBtn">상품 관리</a><a href="#" id="logoutBtn">로그아웃</a></div>`
     } else {
         myPageBtn.innerHTML = `${loginCheck[0].userName}님<div class="dropdown-content"><a href="#" id="myProfile">My Profile</a><a href="#" id="logoutBtn">로그아웃</a></div>`
     }
@@ -189,4 +189,8 @@ document.querySelector("#logoutBtn").addEventListener("click", () => {
 
 document.querySelector("#productBtn").addEventListener("click", () => {
     location.href = "ProductListView.html"
+})
+
+document.querySelector("#cartBtn").addEventListener("click", () => {
+    location.href = "Cart.html"
 })

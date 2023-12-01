@@ -153,6 +153,11 @@
     color: black;
 }
 
+.dropdown-content > a > img {
+    height: 18px;
+}
+
+
 .dropdown-content a:hover {
     color: #0077b5;
 }

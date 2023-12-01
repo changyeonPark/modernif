@@ -10,164 +10,198 @@
 
 <body>
 
-    <div class="container" id="topMove">
+<div class="container" id="topMove">
 
-        <div class="modal">
-        </div>
+    <div class="modal">
+    </div>
 
-        <div class="navigator">
-        </div>
+    <div class="navigator">
+    </div>
 
-        <div class="topBtn">
-            <a href="#topMove"><img src="https://modernif.co.kr/web/upload/btn_right2.png" alt=""></a>
-        </div>
+    <div class="topBtn">
+        <a href="#topMove"><img src="https://modernif.co.kr/web/upload/btn_right2.png" alt=""></a>
+    </div>
 
-        <section class="section">
+    <section class="section">
 
-            <div class="detail-content">
+        <div class="detail-content">
 
-                <div class="detail-header">
+            <div class="detail-header">
 
-                    <div class="detail-header-img">
-                        <!-- 상품 메인 이미지-->
-                        <img class="header-img" alt="상품 메인 이미지">
-                    </div>
+                <div class="detail-header-img">
+                    <img class="header-img" alt="상품 메인 이미지">
+                </div>
 
-                    <div class="detail-header-content">
+                <div class="detail-header-content">
 
-                        <div class="product-info">
+                    <div class="product-info">
+                        <div class="prod-header">
+                            <ul>
+                                <li class="prodName"></li>
+                                <li class="prodPrice"></li>
+                            </ul>
+                        </div>
 
+                        <div class="prodSizeGuide">
+                            <ul>
+                                <li>
+                                    <button class="sizeGuideBtn">SIZE GUIDE</button>
+                                </li>
+                            </ul>
+                        </div>
 
+                        <div class="prodSizeChart">
+                            <ul>
+                                <table class="chart">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>어깨</th>
+                                        <th>가슴</th>
+                                        <th>총길이</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-                            <div class="prod-header">
-                                <ul>
-                                    <li class="prodName"></li>
-                                    <li class="prodPrice"></li>
-                                </ul>
+                                    </tbody>
+                                    <tr>
+                                        <td colspan="5">사이즈 재는 방법에 따라 1~2cm 정도의 오차가 있을 수 있습니다</td>
+                                    </tr>
+                                </table>
+                                <li style="font-size: 13px; list-style: none; padding: 20px 0; text-align: start">모델
+                                    180cm / 67kg
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="choice-menu">
+                            <div>
+                                size
                             </div>
 
-                            <div class="prodSizeGuide">
-                                <ul>
-                                    <li>
-                                        <button class="sizeGuideBtn">SIZE GUIDE</button>
-                                    </li>
-                                </ul>
+                            <div>
+                                <select name="sizeSelect">
+                                    <option value="none">size</option>
+                                    <option value="none">-------------------</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="choice-menu">
+                            <div>
+                                color
                             </div>
 
-                            <div class="prodSizeChart">
-                                <ul>
-                                    <table class="chart">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>어깨</th>
-                                                <th>가슴</th>
-                                                <th>총길이</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        </tbody>
-                                        <tr>
-                                            <td colspan="5">사이즈 재는 방법에 따라 1~2cm 정도의 오차가 있을 수 있습니다</td>
-                                        </tr>
-                                    </table>
-                                    <li style="font-size: 13px; list-style: none; padding: 20px 0; text-align: start">모델 180cm / 67kg</li>
-                                </ul>
+                            <div>
+                                <select name="colorSelect">
+                                    <option>color</option>
+                                    <option value="none">-------------------</option>
+                                </select>
                             </div>
+                        </div>
 
-                            <div class="choice-menu">
+                        <div class="user-select-list">
+                            <div class="selectList">
                                 <div>
-                                    color
+                                    <strong name="selectName"></strong>
+                                    <p name="selectSize-selectColor"></p>
                                 </div>
-
+                                <div class="count-div">
+                                    <input type="text" name="cnt" value="1">
+                                    <div class="countBtn">
+                                        <a class="plusCount"><img
+                                                src="https://img.echosting.cafe24.com/design/skin/default/product/btn_count_up.gif"></a>
+                                        <a class="minusCount"><img
+                                                src="https://img.echosting.cafe24.com/design/skin/default/product/btn_count_down.gif"></a>
+                                    </div>
+                                    <a class="delSelectList"><img
+                                            src="https://img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"></a>
+                                </div>
                                 <div>
-                                    <select>
-                                        <option>color</option>
-                                        <option>-------------------</option>
-                                    </select>
+                                    <p class="selectTotalPrice"></p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="totalPrice">
-                                총 합계 금액 : <b class="total">0</b>
-                            </div>
+                        <div class="totalPrice">
+                            총 합계 금액 : <b class="total">0 원</b>
+                        </div>
 
-                            <div class="prod-action">
-                                <button>BUY IT NOW</button>
-                                <button>ADD TO CART</button>
-                            </div>
+                        <div class="prod-action">
+                            <button id="buyBtn" type="button">BUY IT NOW</button>
+                            <button id="cartBtn" type="button">ADD TO CART</button>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="detail-body">
-                    <div class="detail-tag">
-                        <a href="#prdDetail" id="prdDetail">디테일</a>
-                        <a href="#deliveryComment">배송 및 교환 안내</a>
-                    </div>
+            <div class="detail-body">
+                <div class="detail-tag">
+                    <a href="#prdDetail" id="prdDetail">디테일</a>
+                    <a href="#deliveryComment">배송 및 교환 안내</a>
+                </div>
 
-                    <div class="detail-body-img">
-                        <!-- 상세 페이지 이미지 -->
-                    </div>
+                <div class="detail-body-img">
+                    <!-- 상세 페이지 이미지 -->
+                </div>
 
-                    <div class="detail-tag">
-                        <a href="#prdDetail">디테일</a>
-                        <a href="#deliveryComment" id="deliveryComment">배송 및 교환 안내</a>
-                    </div>
+                <div class="detail-tag">
+                    <a href="#prdDetail">디테일</a>
+                    <a href="#deliveryComment" id="deliveryComment">배송 및 교환 안내</a>
+                </div>
 
-                    <div class="delivery-comment">
-                        <ul>
-                            <li class="title">배송안내</li>
-                            <li class="inner">
-                                <p>
-                                    <strong>배송안내</strong><br>
-                                    <span>
+                <div class="delivery-comment">
+                    <ul>
+                        <li class="title">배송안내</li>
+                        <li class="inner">
+                            <p>
+                                <strong>배송안내</strong><br>
+                                <span>
                                         배송전 취소는 오전 10시까지 게시판에 작성해주셔야 합니다..<br>
                                         7만원 이상 구매 시 무료배송, 7만원 미만의 경우 3,000원의 배송비가 추가됩니다.<br>
                                         (제주도 : 7만원 이상 구매 시 배송비 3,000원 할인되며, 7만원 미만의 경우 6,500원입니다)<br>
                                         CJ 택배로 발송되며, CJ택배로 발송시 배송기간은 2-3일(주말, 공휴일 제외) 소요될 수 있습니다.<br>
                                     </span>
-                                </p>
-                                <br>
-                                <p>
-                                    <strong>택배 발송</strong><br>
-                                    <span>
+                            </p>
+                            <br>
+                            <p>
+                                <strong>택배 발송</strong><br>
+                                <span>
                                         - 평일 PM 19:00 까지 결제 완료된 주문건에 한하여 거래처에 입고요청되어 입고 완료시 정상 발송됩니다.<br>
                                         - 택배발송 업무시간은 평일 PM 18:00 마감됩니다.<br>
                                         - 주문 후 평균적으로 평일 기준 2~5일정도 상품 입고기간이 소요됩니다.<br>
                                         - 장기 지연시 개별 연락을 드립니다.<br>
                                         - 택배 발송 시 알림톡을 통해 운송장번호가 발송됩니다. (알림톡 미발송시 문자발송)<br>
                                     </span>
-                                </p>
-                                <br>
-                            </li>
-                        </ul>
+                            </p>
+                            <br>
+                        </li>
+                    </ul>
 
-                        <ul>
-                            <li class="title">교환 및 반품안내</li>
-                            <li class="inner">
-                                <p>
-                                    <strong>교환 및 반품주소</strong><br>
-                                    <span>
+                    <ul>
+                        <li class="title">교환 및 반품안내</li>
+                        <li class="inner">
+                            <p>
+                                <strong>교환 및 반품주소</strong><br>
+                                <span>
                                         - 대전광역시 서구 계룡로 825 희영빌딩 2층 모던이프<br>
                                     </span>
-                                </p>
-                                <br>
-                                <p>
-                                    <strong>교환 및 반품안내</strong><br>
-                                    <span>
+                            </p>
+                            <br>
+                            <p>
+                                <strong>교환 및 반품안내</strong><br>
+                                <span>
                                         - 상품 수령 후 7일 이내 모던이프 Q&A 또는 고객센터(1522-4953) 로 접수<br>
                                         - 타택배(편의점, 우체국, 로젠 등) 이용 시 선불로 발송<br>
                                         - 모던이프와 계약된 CJ택배가 아닌 타택배(편의점, 우체국, 로젠 등) 로<br>
                                            &nbsp;&nbsp;발송된 상품이 분실된 경우 책임을 지지 않습니다<br>
                                         - 당일 배송전 취소 및 주소변경은 오후 12시 이전까지 가능합니다<br>
                                     </span>
-                                </p>
-                                <br>
-                                <p>
-                                    <strong>교환 및 반품이 불가능한 경우</strong><br>
-                                    <span>
+                            </p>
+                            <br>
+                            <p>
+                                <strong>교환 및 반품이 불가능한 경우</strong><br>
+                                <span>
                                         - 반품 및 교환 접수 기간(수령일로부터 7일) 이 경과한 경우<br>
                                         - 고객의 부주의로 인한 제품의 변형이나 훼손, 오염, 파손으로 인해<br>
                                            &nbsp;&nbsp;재화의 가치가 떨어진 경우<br>
@@ -177,11 +211,11 @@
                                         - 주문제작으로만 판매가 이루어지는 수제화 등의 상품의 경우<br>
                                         - 불량상품 또는 모던이프 실수로 오배송된 상품을 착용하거나 오염 및 훼손한 경우<br>
                                     </span>
-                                </p>
-                                <br>
-                                <p>
-                                    <strong>불량사유에 포함되지 않는 항목</strong><br>
-                                    <span>
+                            </p>
+                            <br>
+                            <p>
+                                <strong>불량사유에 포함되지 않는 항목</strong><br>
+                                <span>
                                         - 배송시 발생한 상품의 구김<br>
                                         - 재봉실밥 일부 정리가 안된 경우<br>
                                         - 단추가 다소 허술하게 마감된 경우<br>
@@ -191,95 +225,90 @@
                                         - 모니터 해상도의 미세한 차이로 인한 색상&이미지 차이<br>
                                         사소한 부분들은 불량사유가 될 수 없는 부분 안내드리겠습니다.<br>
                                     </span>
-                                </p>
-                                <br>
-                            </li>
-                        </ul>
-                        <ul>
+                            </p>
+                            <br>
+                        </li>
+                    </ul>
+                    <ul>
 
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-
             </div>
 
-        </section>
+        </div>
 
-        <footer class="footer">
-        </footer>
+    </section>
 
-    </div>
+    <footer class="footer">
+    </footer>
 
-    <script>
+</div>
+
+<script>
+
+    const cartBtn = document.querySelector("#cartBtn")
+
+    cartBtn.addEventListener("click", () => {
+
+        // 1. 현재 로그인 한 사람의 정보가 필요하고
+        // 2. 현재 선택한 아이템 정보가 필요함
+
+        // 3. 로그인한 사람 장바구니 리스트에
+        // 현재 선택한 아이템들을 담아놔야함
+
+        // 4. 다시 로그인 했을 경우 데이터가 있어야함
+        // 로그아웃이나 브라우저를 닫아도 다시 로그인했을 경우 데이터가 있어야함
+
+        // 그럼 localStorage.getItem() 키값을 뭘로 줄 것이냐?
+        // 로그인한 사람의 유일한 로컬스토리지가 되어야함
+
+        const cartList = JSON.parse(localStorage.getItem("cart")) || []
+
         const product = JSON.parse(localStorage.getItem("product"))
-        const productName = sessionStorage.getItem("prodName")
 
-        const prodNameEl = document.querySelector(".prodName")
+        const selectList = document.querySelectorAll(".selectList")
+
+        const prodImg = document.querySelector(".header-img")
+        const prodName = document.querySelector(".prodName")
         const prodPriceEl = document.querySelector(".prodPrice")
-        const mainImgEl = document.querySelector(".header-img")
-        const sizeCartEl = document.querySelector("tbody")
-        const detailImgEl = document.querySelector(".detail-body-img")
 
-        for (let i = 0; i < product.length; i++) {
-            const prodNo = product[i].prodNo
-            const prodName = product[i].prodName
-            const prodPrice = product[i].prodPrice
-            const prodCategory = product[i].prodCategory
-            const mainImgUrl = product[i].mainImgUrl
-            const prodSize = product[i].prodSize /* 2중 배열임 */
-            const detailImgUrl = product[i].detailImgUrl /* 배열임 */
-            const prodDelYn = product[i].prodDelYn
+        let prodPriceElReplace = prodPriceEl.textContent.replace(",", "")
+        let prodPrice = prodPriceElReplace.replace("원", "")
 
-            if (productName === prodName){
-                prodNameEl.textContent = prodName
-                prodPriceEl.textContent = prodPrice
-                mainImgEl.setAttribute("src", mainImgUrl)
+        for (let i = 0; i < selectList.length; i++) {
+            if (selectList[i].style.display === "flex"){
 
-                for (let j = 0; j < prodSize.length; j++) {
-                    console.log(prodSize.length) // = 2
-                    console.log(prodSize[j])     // = 4
+                const selectOptions = selectList[i].querySelector("p[name=selectSize-selectColor]")
+                const cnt = selectList[i].querySelector("input[name=cnt]")
+                const selectTotalPrice = selectList[i].querySelector(".selectTotalPrice")
 
-                    const sizeTr = document.createElement("tr")
-                    const sizeTd = document.createElement("td")
-                    const shoulderTd = document.createElement("td")
-                    const chestTd = document.createElement("td")
-                    const totalLengthTd = document.createElement("td")
-
-                    sizeTd.tagName = "size"
-                    sizeTd.textContent = prodSize[j][0].toUpperCase()
-
-                    shoulderTd.tagName = "shoulder"
-                    shoulderTd.textContent = prodSize[j][1]+"cm"
-
-                    chestTd.tagName = "chest"
-                    chestTd.textContent = prodSize[j][2]+"cm"
-
-                    totalLengthTd.tagName = "totalLength"
-                    totalLengthTd.textContent = prodSize[j][3]+"cm"
-
-                    sizeTr.append(sizeTd, shoulderTd, chestTd, totalLengthTd)
-
-                    sizeCartEl.appendChild(sizeTr)
-                }
-
-                for (let j = 0; j < detailImgUrl.length; j++) {
-                    const imgEl = document.createElement("img")
-                    imgEl.setAttribute("src", detailImgUrl[j])
-                    imgEl.setAttribute("alt", j+" 번째 디테일 이미지")
-
-                    detailImgEl.appendChild(imgEl)
-                }
+                cartList.push( {
+                    "prodImg": prodImg.src,
+                    "prodName": prodName.textContent,
+                    "prodPrice": prodPrice,
+                    "selectOption": selectOptions.textContent,
+                    "cnt": cnt.value,
+                    "totalPrice": selectTotalPrice.textContent
+                } )
             }
         }
 
+        localStorage.setItem("cart", JSON.stringify(cartList))
+        // localStorage.removeItem("cart")
 
-    </script>
+        alert("장바구니 버튼 클릭")
+    })
 
-    <script src="resources/script/Navigator.js"></script>
 
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</script>
 
-    <script src="resources/script/SearchRoad.js"></script>
+<script src="resources/script/ProductDetail.js"></script>
+
+<script src="resources/script/Navigator.js"></script>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script src="resources/script/SearchRoad.js"></script>
 
 </body>
 </html>

@@ -14,16 +14,17 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
+    margin: auto;
 }
 
 .detail-header-img {
+    margin: 16px auto;
     width: 400px;
-    height: 550px;
+    height: 500px;
 }
 
 .detail-header-content {
     width: 60%;
-    height: 550px;
 }
 
 .header-img {
@@ -117,6 +118,8 @@ ul {
     height: 26px;
 }
 
+
+
 .totalPrice {
     margin: 30px 0 30px 40px;
     text-align: start;
@@ -126,6 +129,10 @@ ul {
     margin: 30px 0 30px 40px;
     display: flex;
     height: 50px;
+}
+
+.prod-action > button:hover {
+    cursor: pointer;
 }
 
 .prod-action button:nth-child(1) {
@@ -221,4 +228,99 @@ ul {
 .topBtn > a {
     color: white;
     text-decoration: none;
+}
+
+.user-select-list {
+    margin: 50px 0px 50px 40px;
+    border-top: 1px solid #dfdfdf;
+}
+
+.selectList {
+    width: 100%;
+    height: 70px;
+
+    display: none;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.selectList input {
+    width: 40px;
+}
+
+.selectList p {
+    margin: 0px;
+    font-size: 13px;
+}
+
+.selectList strong {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.selectList > div {
+    text-align: center;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.selectList > div:nth-child(1){
+    width: 50%;
+    text-align: start;
+}
+
+.selectList > div:nth-child(2){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 25%;
+    text-align: start;
+}
+
+.selectList > div:nth-child(3){
+    width: 25%;
+    align-items: end;
+}
+
+.count-div input {
+    height: 20px;
+}
+
+.countBtn {
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+
+.countBtn > a {
+    height: 50%;
+    display: flex;
+}
+
+#delSelectList {
+    height: 26px;
+    display: flex;
+    align-items: center;
+}
+
+#delSelectList:hover{
+    cursor: pointer;
+}
+
+#delSelectList > img {
+    height: 60%;
+}
+
+.countBtn:hover {
+    cursor: pointer;
+}
+
+
+.countBtn > a > img{
+    width: 100%;
+    height: 100%;
 }

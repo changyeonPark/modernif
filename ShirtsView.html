@@ -44,6 +44,8 @@
 
     const product = JSON.parse(localStorage.getItem("product"))
 
+    product.reverse()
+
     for (let i = 0; i < product.length; i++) {
         const prodNo = product[i].prodNo
         const prodName = product[i].prodName

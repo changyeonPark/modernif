@@ -88,7 +88,7 @@
         height: 21px;
     }
 
-    .detail-img-url > input{
+    .detail-img-url > input {
         width: 84%;
         margin-right: 14px;
     }
@@ -109,13 +109,13 @@
         border: 1px solid #999;
     }
 
-    .product-info-footer > button:hover{
+    .product-info-footer > button:hover {
         background-color: black;
         cursor: pointer;
         color: white;
     }
 
-    .product-info-footer > button:nth-child(1){
+    .product-info-footer > button:nth-child(1) {
         border-right: none;
     }
 
@@ -131,6 +131,7 @@
 
     <input type="hidden" value=1 id="plusNum">
     <input type="hidden" value=1 id="plusInput">
+    <input type="hidden" value=1 id="color-div">
 
     <div class="body">
         <form name="product" method="POST">
@@ -139,7 +140,7 @@
                     상품 이름
                 </div>
                 <div class="prod-name">
-                    <input type="text" name="prodName" id="prodName" placeholder="상품명을 입력해주세요.">
+                    <input type="text" name="prodName" placeholder="상품명을 입력해주세요.">
                 </div>
             </div>
 
@@ -148,7 +149,7 @@
                     상품 가격
                 </div>
                 <div class="prod-price">
-                    <input type="text" name="prodPrice" id="prodPrice" placeholder="가격을 입력해주세요.">
+                    <input type="text" name="prodPrice" placeholder="가격을 입력해주세요.">
                 </div>
             </div>
 
@@ -157,7 +158,7 @@
                     카테고리
                 </div>
                 <div class="prod-category">
-                    <select name="category" id="category">
+                    <select name="category" onchange="changeSizeLabel(this)">
                         <option value="none" selected>---------</option>
                         <option value="outer">OUTER</option>
                         <option value="top">TOP</option>
@@ -167,6 +168,19 @@
                         <option value="shoes">SHOES</option>
                         <option value="acc">ACC</option>
                     </select>
+                </div>
+            </div>
+
+            <div class="prod-color-list">
+                <div class="product-info color-div">
+                    <div>
+                        color
+                    </div>
+                    <div class="detail-img-url">
+                        <input type="text" name="prodColor" placeholder="color">
+                        <button name="colorPlusBtn" type="button" onclick="copyColorInput()">&#9662;</button>
+                        <button name="colorDelBtn" type="button" onclick="delInput(this)">&#10005;</button>
+                    </div>
                 </div>
             </div>
 
@@ -195,9 +209,12 @@
                             <option value="2xl">2XL</option>
                             <option value="3xl">3XL</option>
                         </select>
-                        어깨 <input type="text" name="prodShoulder">
-                        가슴 <input type="text" name="prodChest">
-                        총길이 <input type="text" name="prodTotalLength">
+                        <span name="size1">어깨</span>
+                        <input type="text" name="size1">
+                        <span name="size2">가슴</span>
+                        <input type="text" name="size2">
+                        <span name="size3">총길이</span>
+                        <input type="text" name="size3">
 
                         <button name="sizePlusBtn" type="button" onclick="copyDiv()">&#9662;</button>
                         <button name="sizeDelBtn" type="button" onclick="delDiv(this)">&#10005;</button>
@@ -212,13 +229,12 @@
                     </div>
                     <div class="detail-img-url">
 
-                        <input type="text" name="detailImgUrl" id="detailImgUrl" placeholder="상세 페이지 이미지 주소를 입력해주세요.">
+                        <input type="text" name="detailImgUrl" placeholder="상세 페이지 이미지 주소를 입력해주세요.">
                         <button name="urlPlusBtn" type="button" onclick="copyInput()">&#9662;</button>
                         <button name="urlDelBtn" type="button" onclick="delInput(this)">&#10005;</button>
                     </div>
                 </div>
             </div>
-
 
             <div class="product-info-footer">
                 <button id="registerBtn" type="button">REGISTER</button>
@@ -230,112 +246,52 @@
 
 <script>
 
-    document.querySelector("#registerBtn").addEventListener("click", () => {
+    const prodName = document.querySelector("input[name=prodName]")
+    const prodPrice = document.querySelector("input[name=prodPrice]")
+    const prodCategory = document.querySelector("select[name=category]")
+    const mainImgUrl = document.querySelector("#mainImgUrl")
 
-        const prodName = document.querySelector("#prodName")
-        const prodPrice = document.querySelector("#prodPrice")
-        const prodCategory = document.querySelector("select[name=category]")
-        const mainImgUrl = document.querySelector("#mainImgUrl")
-        const sizes = document.querySelectorAll(".prod-size-list > div")
 
-        if (prodName.value === ""){
-            prodName.focus()
-            return
+    function changeSizeLabel(category) {
+
+        if (category.value === "bottom") {
+            const size1 = document.querySelectorAll("span[name=size1]")
+            size1.forEach((el) => {
+                el.textContent = "허리"
+            })
+            const size2 = document.querySelectorAll("span[name=size2]")
+            size2.forEach(el => {
+                el.textContent = "허벅지"
+            })
+            const size3 = document.querySelectorAll("span[name=size3]")
+            size3.forEach(el => {
+                el.textContent = "총길이"
+            })
+            const sizeInput = document.querySelectorAll(".prod-size input")
+            sizeInput.forEach((el) => {
+                el.style.width = "11%";
+            })
+        } else {
+            const size1 = document.querySelectorAll("span[name=size1]")
+            size1.forEach((el) => {
+                el.textContent = "어깨"
+            })
+            const size2 = document.querySelectorAll("span[name=size2]")
+            size2.forEach(el => {
+                el.textContent = "가슴"
+            })
+            const size3 = document.querySelectorAll("span[name=size3]")
+            size3.forEach(el => {
+                el.textContent = "총길이"
+            })
+            const sizeInput = document.querySelectorAll(".prod-size input")
+            sizeInput.forEach((el) => {
+                el.style.width = "12%";
+            })
         }
 
-        if (prodPrice.value === ""){
-            prodPrice.focus()
-            return
-        }
+    }
 
-        if (prodCategory.value === "none"){
-            prodCategory.focus()
-            return
-        }
-
-        if (mainImgUrl.value === ""){
-            mainImgUrl.focus()
-            return
-        }
-
-        let prodSize = []
-
-        for (let i = 0; i < sizes.length; i++) {
-            let sizeList = []
-
-            let selectEl = sizes[i].querySelector("select[name=size]")
-            let prodShoulder = sizes[i].querySelector("input[name=prodShoulder]")
-            let prodChest = sizes[i].querySelector("input[name=prodChest]")
-            let prodTotalLength = sizes[i].querySelector("input[name=prodTotalLength]")
-
-            if (selectEl.value === "none"){
-                selectEl.focus()
-                return
-            }
-
-            if (prodShoulder.value === ""){
-                prodShoulder.focus()
-                return
-            }
-
-            if (prodChest.value === ""){
-                prodChest.focus()
-                return
-            }
-
-            if (prodTotalLength.value === ""){
-                prodTotalLength.focus()
-                return
-            }
-
-            sizeList.push(selectEl.value)
-            sizeList.push(prodShoulder.value)
-            sizeList.push(prodChest.value)
-            sizeList.push(prodTotalLength.value)
-
-            prodSize.push(sizeList)
-
-
-        }
-
-
-        const detailImgUrls = document.querySelectorAll(".detail-img-list > div")
-
-        let detailImgUrl = []
-
-        for (let i = 0; i < detailImgUrls.length; i++) {
-
-            const detailImgUrlInput = detailImgUrls[i].querySelector("#detailImgUrl")
-
-            if (detailImgUrlInput.value === ""){
-                detailImgUrlInput.focus()
-                return
-            }
-
-            detailImgUrl.push(detailImgUrlInput.value)
-
-        }
-
-        let prodList = JSON.parse(localStorage.getItem("product")) || []
-
-        prodList.push({
-            "prodNo": prodList.length+1,
-            "prodName": prodName.value,
-            "prodPrice": prodPrice.value,
-            "prodCategory": prodCategory.value,
-            "mainImgUrl": mainImgUrl.value,
-            "prodSize": prodSize,
-            "detailImgUrl": detailImgUrl,
-            "prodDelYn": "N"
-        })
-
-        localStorage.setItem("product", JSON.stringify(prodList))
-
-        alert("상품 등록 성공")
-
-        location.href = "ProductListView.html"
-
-    })
     function copyDiv() {
 
         const parentDiv = document.querySelector(".prod-size-list")
@@ -364,7 +320,9 @@
         // test1.forEach( el => {
         //     console.log(el)
         // })
+
     }
+
 
     function delDiv(el) {
 
@@ -377,6 +335,28 @@
             document.querySelector(`.${className}`).remove()
         }
 
+    }
+
+    function copyColorInput() {
+        const parentDiv = document.querySelector(".prod-color-list")
+        const copyDiv = document.querySelector(".color-div").cloneNode(true)
+        const hiddenInput = document.querySelector("#color-div")
+
+        const newDiv = copyDiv
+
+        let className = "color-div"
+        let hiddenInputVal = hiddenInput.value
+        let changeClassName = className + hiddenInputVal
+
+        newDiv.classList.replace("color-div", changeClassName)
+
+        parentDiv.append(newDiv)
+
+        const test = document.querySelector(`.${changeClassName} input[type=text]`)
+
+        test.value = ""
+
+        hiddenInput.value = parseInt(hiddenInput.value) + 1
     }
 
     function copyInput() {
@@ -416,6 +396,120 @@
     document.querySelector("#backBtn").addEventListener("click", (e) => {
         e.preventDefault()
         history.back()
+    })
+
+
+
+    document.querySelector("#registerBtn").addEventListener("click", () => {
+
+        const sizes = document.querySelectorAll(".prod-size")
+        const colors = document.querySelectorAll("input[name=prodColor]")
+        console.log(colors.length)
+
+        if (prodName.value === "") {
+            prodName.focus()
+            return
+        }
+
+        if (prodPrice.value === "") {
+            prodPrice.focus()
+            return
+        }
+
+        if (prodCategory.value === "none") {
+            prodCategory.focus()
+            return
+        }
+
+        if (mainImgUrl.value === "") {
+            mainImgUrl.focus()
+            return
+        }
+
+        let color = []
+
+        for (let i = 0; i < colors.length; i++) {
+            color.push(colors[i].value)
+        }
+
+        let prodSize = []
+
+        for (let i = 0; i < sizes.length; i++) {
+            let sizeList = []
+
+            let selectEl = sizes[i].querySelector("select[name=size]")
+            let size1 = sizes[i].querySelector("input[name=size1]")
+            let size2 = sizes[i].querySelector("input[name=size2]")
+            let size3 = sizes[i].querySelector("input[name=size3]")
+
+            if (selectEl.value === "none") {
+                selectEl.focus()
+                return
+            }
+
+            if (size1.value === "") {
+                size1.focus()
+                return
+            }
+
+            if (size2.value === "") {
+                size2.focus()
+                return
+            }
+
+            if (size3.value === "") {
+                size3.focus()
+                return
+            }
+
+            sizeList.push(selectEl.value)
+            sizeList.push(size1.value)
+            sizeList.push(size2.value)
+            sizeList.push(size3.value)
+
+            prodSize.push(sizeList)
+
+
+        }
+
+
+        const detailImgUrls = document.querySelectorAll(".detail-img-list > div")
+
+        let detailImgUrl = []
+
+        for (let i = 0; i < detailImgUrls.length; i++) {
+
+            const detailImgUrlInput = detailImgUrls[i].querySelector("input[name=detailImgUrl]")
+
+            if (detailImgUrlInput.value === "") {
+                detailImgUrlInput.focus()
+                return
+            }
+
+            detailImgUrl.push(detailImgUrlInput.value)
+
+        }
+
+        let prodList = JSON.parse(localStorage.getItem("product")) || []
+
+        prodList.push({
+            "prodNo": prodList.length + 1,
+            "prodName": prodName.value,
+            "prodPrice": prodPrice.value,
+            "prodCategory": prodCategory.value,
+            "mainImgUrl": mainImgUrl.value,
+            "prodSize": prodSize,
+            "detailImgUrl": detailImgUrl,
+            "prodDelYn": "N",
+            "color" : color
+        })
+
+        localStorage.setItem("product", JSON.stringify(prodList))
+
+        alert("상품 등록 성공")
+
+        location.href = "ProductListView.html"
+
     })
 
 
