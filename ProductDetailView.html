@@ -296,7 +296,10 @@
         localStorage.setItem("cart", JSON.stringify(cartList))
         // localStorage.removeItem("cart")
 
-        alert("장바구니 버튼 클릭")
+        if (confirm("장바구니로 이동하시겠습니까?")){
+            location.href = "Cart.html"
+        }
+
     })
 
 
